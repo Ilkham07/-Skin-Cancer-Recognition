@@ -10,10 +10,8 @@ import base64
 
 app = Flask(__name__, template_folder='.')
 
-# Load the trained model
 model = load_model('best_model_finetuned.h5')
 
-# Diagnosis dictionary mapping for predictions
 diagnosis_dict = {
     0: 'MEL',
     1: 'NV',
@@ -26,7 +24,6 @@ diagnosis_dict = {
     8: 'UNK'
 }
 
-# Load actual diagnoses data
 def load_actual_diagnoses():
     return pd.read_csv('ISIC_2019_Training_GroundTruth.csv')
 
@@ -46,9 +43,8 @@ def predict():
     if file and allowed_file(file.filename):
         try:
             img_bytes = BytesIO(file.read())
-            img_bytes_for_display = img_bytes.getvalue()  # Preserve the original image bytes for display
-            filename = os.path.splitext(file.filename)[0]  # Extract filename without extension
-
+            img_bytes_for_display = img_bytes.getvalue() 
+            filename = os.path.splitext(file.filename)[0] 
             img = Image.open(img_bytes)
             img = img.resize((224, 224))
             img_array = image.img_to_array(img)
@@ -58,15 +54,15 @@ def predict():
             predictions = model.predict(img_array)
             predicted_class = np.argmax(predictions, axis=1)
             predicted_diagnosis = diagnosis_dict[predicted_class[0]]
-            confidence = np.max(predictions) * 100  # Get the highest confidence value
+            confidence = np.max(predictions) * 100  
 
             actual_diagnoses_df = load_actual_diagnoses()
             actual_diagnosis_row = actual_diagnoses_df[actual_diagnoses_df['image'] == filename]
             actual_diagnosis = 'Not available'
             if not actual_diagnosis_row.empty:
-                actual_diagnosis = actual_diagnosis_row.iloc[0][1:].idxmax()  # Get the label with the highest value
+                actual_diagnosis = actual_diagnosis_row.iloc[0][1:].idxmax()  
 
-            # Convert image for HTML display
+        
             encoded_img = base64.b64encode(img_bytes_for_display).decode('utf-8')
             image_data = f"data:image/jpeg;base64,{encoded_img}"
 
