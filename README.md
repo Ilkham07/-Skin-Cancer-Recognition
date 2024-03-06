@@ -1,6 +1,8 @@
 **README.md**
 
 # Skin Cancer Recognition
+Group: IT-2209
+Group Members: Aiteni Tolegen, Ilham Assimov, Erniyaz Ashuov
 
 ## Proposal:
 
