@@ -38,6 +38,6 @@ Our project utilizes Python for data processing and model development, along wit
 - Integration of the model into a web application interface for user accessibility.
 - Continuous monitoring and updating of the model to adapt to emerging data and trends in skin cancer recognition.
 
-[[Link for YouTube video demonstration](https://youtube.com/shorts/DTDRu7DTsG4?si=62MF2GW23Y7-eUd8)https://youtube.com/shorts/DTDRu7DTsG4?si=62MF2GW23Y7-eUd8](#) - *To be added*
+[[Link for YouTube video demonstration](https://youtube.com/shorts/DTDRu7DTsG4?si=62MF2GW23Y7-eUd8)https://youtube.com/shorts/DTDRu7DTsG4?si=62MF2GW23Y7-eUd8](#) - *Demo version*
 
 ---
